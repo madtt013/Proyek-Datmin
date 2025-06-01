@@ -5,8 +5,8 @@ from sklearn.metrics import classification_report
 
 def train_model(df):
     # Pisahkan fitur dan target
-    X = df.drop("stroke ", axis=1)  # Ganti "stroke" dengan nama kolom target
-    y = df["stroke "]  # Ganti "stroke" dengan nama kolom target
+    X = df.drop("Stroke", axis=1)  # Ganti "stroke" dengan nama kolom target
+    y = df["Stroke"]  # Ganti "stroke" dengan nama kolom target
     
     # Konversi variabel kategorikal ke numerik
     X = pd.get_dummies(X, drop_first=True)
