@@ -1,5 +1,9 @@
 import pandas as pd
+import streamlit as st
 
+# Fungsi untuk memuat dataset
 @st.cache_data
 def load_data():
-    return pd.read_csv("data/stroke_data.csv")
+    DATA_PATH = "data/healthcare-dataset-stroke-data.csv"
+    df = pd.read_csv(DATA_PATH)
+    return df
