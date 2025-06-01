@@ -7,11 +7,6 @@ st.title("📊 Pelatihan Model")
 
 df = load_data()
 
-if st.button("Train Model"):
-    report = train_model(df)
-    st.write("Model Performance:")
-    st.json(report)
-
 with st.spinner("Melatih model..."):
     report = train_model(df)
 
