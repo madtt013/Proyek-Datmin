@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from utils.data_loader import load_data
+from utils.data_loader import stroke_data.csv
 
 st.title("🧠 Exploratory Data Analysis (EDA)")
 
