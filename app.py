@@ -1,17 +1,11 @@
 import streamlit as st
 
-# Navigasi antar halaman
-def main():
-    st.sidebar.title("Navigasi")
-    pages = {
-        "Halaman EDA": "pages.page1_eda",
-        "Hasil Pelatihan Model": "pages.page2_model",
-        "Formulir Prediksi": "pages.page3_predict"
-    }
-    choice = st.sidebar.radio("Pilih Halaman", list(pages.keys()))
+st.set_page_config(page_title="Stroke Dashboard", layout="wide")
 
-    module = __import__(pages[choice], fromlist=[''])
-    module.run()
-
-if __name__ == "__main__":
-    main()
+st.title("Dashboard Prediksi Stroke")
+st.markdown("""
+Silakan navigasi ke halaman:
+- **EDA** untuk eksplorasi data
+- **Model** untuk melihat hasil pelatihan
+- **Prediksi** untuk input dan prediksi data
+""")
