@@ -1,7 +1,12 @@
-from utils.data_loader import load_data
+import streamlit as st
+from utils.model_utils import train_model
 
-# Memuat dataset
-df = load_data()
+def run():
+    st.title("Hasil Pelatihan Model")
+    accuracy, report = train_model()
 
-# Menampilkan nama kolom
-print(df.columns)
+    st.subheader("Akurasi Model")
+    st.write(f"Akurasi: {accuracy:.2f}")
+
+    st.subheader("Laporan Klasifikasi")
+    st.text(report)
