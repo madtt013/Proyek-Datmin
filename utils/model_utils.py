@@ -2,6 +2,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
+import joblib
+
+# Melatih model Anda (contoh)
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier()
+
+# Simpan model
+joblib.dump(model, "model.pkl")
 
 def train_model(df):
     # Pisahkan fitur dan target
