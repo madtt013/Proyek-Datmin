@@ -11,6 +11,9 @@ model = RandomForestClassifier()
 # Simpan model
 joblib.dump(model, "model.pkl")
 
+# Simpan kolom input (fitur) yang digunakan untuk prediksi
+joblib.dump(X.columns.tolist(), 'model/model_columns.pkl')
+
 def train_model(df):
     # Pisahkan fitur dan target
     X = df.drop("stroke", axis=1)  # Ganti "stroke" dengan nama kolom target
