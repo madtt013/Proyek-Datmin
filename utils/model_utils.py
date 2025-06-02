@@ -1,35 +1,31 @@
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 import joblib
 
-# Melatih model Anda (contoh)
-from sklearn.ensemble import RandomForestClassifier
-model = RandomForestClassifier()
-
-# Simpan model
-joblib.dump(model, "model.pkl")
-
-# Simpan kolom input (fitur) yang digunakan untuk prediksi
-joblib.dump(X.columns.tolist(), 'model/model_columns.pkl')
-
 def train_model(df):
     # Pisahkan fitur dan target
-    X = df.drop("stroke", axis=1)  # Ganti "stroke" dengan nama kolom target
-    y = df["stroke"]  # Ganti "stroke" dengan nama kolom target
+    X = df.drop("stroke", axis=1)
+    y = df["stroke"]
     
     # Konversi variabel kategorikal ke numerik
-    X = pd.get_dummies(X, drop_first=True)
+    X_encoded = pd.get_dummies(X, drop_first=True)
     
-    # Bagi data menjadi training dan testing
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    # Bagi data
+    X_train, X_test, y_train, y_test = train_test_split(X_encoded, y, test_size=0.2, random_state=42)
     
-    # Latih model RandomForest
+    # Latih model
     model = RandomForestClassifier(random_state=42)
     model.fit(X_train, y_train)
     
-    # Evaluasi model
+    # Simpan model dan kolom (buat folder model jika belum ada)
+    os.makedirs("model", exist_ok=True)
+    joblib.dump(model, "model/model.pkl")
+    joblib.dump(X_encoded.columns.tolist(), "model/model_columns.pkl")
+    
+    # Evaluasi
     y_pred = model.predict(X_test)
     report = classification_report(y_test, y_pred, output_dict=True)
     
