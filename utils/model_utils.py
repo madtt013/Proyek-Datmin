@@ -15,10 +15,6 @@ def train_model(df):
     # Pisahkan fitur dan target
     X = df.drop("stroke", axis=1)  # Ganti "stroke" dengan nama kolom target
     y = df["stroke"]  # Ganti "stroke" dengan nama kolom target
-
-    # Simpan nama kolom (fitur) ke file model_columns.pkl
-    model_columns = list(X.columns)
-    joblib.dump(model_columns, "model_columns.pkl")  # Simpan file di direktori utama
     
     # Konversi variabel kategorikal ke numerik
     X = pd.get_dummies(X, drop_first=True)
